@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Отец Рандома — Бонусы, стримы и быстрый старт</title>
+  <meta name="description" content="Стартуй в пару кликов: бонусы, быстрые платежи, турниры и акции. Ответственная игра 18+." />
+  <style>
+    :root{
+      --bg:#0B0B0E;
+      --bg-2:#131318;
+      --card:#16161d;
+      --text:#F6F7FB;
+      --muted:#B7B9C3;
+      --brand:#FFD300;
+      --brand-2:#FFEF7A;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --maxw:1200px;
+      --header-h:72px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans";
+      background:radial-gradient(1200px 800px at 80% -10%, rgba(255,211,0,.08), transparent 60%), var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    /* Header */
+    .header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(150%) blur(6px); background:rgba(11,11,14,.6); border-bottom:1px solid rgba(255,255,255,.06);}
+    .nav{max-width:var(--maxw); margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:12px 16px; height:var(--header-h)}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.3px}
+    .brand .dot{width:12px; height:12px; border-radius:50%; background:var(--brand); box-shadow:0 0 0 4px rgba(255,211,0,.15)}
+    .brand span{font-size:18px}
+    .links{display:flex; align-items:center; gap:18px}
+    .links a{opacity:.85}
+    .links a:hover{opacity:1}
+    .cta{background:linear-gradient(180deg, var(--brand), var(--brand-2)); color:#111; font-weight:800; padding:10px 16px; border-radius:14px; box-shadow:0 8px 20px rgba(255,211,0,.25); border:1px solid rgba(0,0,0,.15)}
+    .cta:hover{transform:translateY(-1px)}
+    .burger{display:none; width:40px; height:40px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:var(--bg-2); align-items:center; justify-content:center}
+    .burger span{width:18px; height:2px; background:var(--text); position:relative}
+    .burger span:before,.burger span:after{content:""; position:absolute; width:18px; height:2px; left:0; background:var(--text)}
+    .burger span:before{top:-6px} .burger span:after{top:6px}
+    .mobile{display:none; padding:8px 16px 16px; border-bottom:1px solid rgba(255,255,255,.06); background:var(--bg-2)}
+    .mobile a{display:block; padding:10px 4px; opacity:.9}
+
+    /* Hero */
+    .hero{max-width:var(--maxw); margin:0 auto; padding:44px 16px 24px; display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:center}
+    .tag{display:inline-flex; align-items:center; gap:10px; padding:6px 10px; border:1px solid rgba(255,255,255,.08); border-radius:999px; color:var(--muted); font-size:13px;}
+    .tag b{color:var(--brand)}
+    h1{font-size:clamp(28px, 5vw, 50px); line-height:1.08; margin:14px 0 10px}
+    .sub{color:var(--muted); font-size:16px; margin:0 0 20px}
+    .btns{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:12px 16px; border-radius:14px; border:1px solid rgba(255,255,255,.08); background:var(--card); color:var(--text)}
+    .btn--brand{background:linear-gradient(180deg, var(--brand), var(--brand-2)); color:#111; font-weight:800}
+    .btn small{color:var(--muted)}
+    .hero-card{background:linear-gradient(180deg, rgba(255,211,0,.08), rgba(255,211,0,.02)); border:1px solid rgba(255,211,0,.25); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .stats{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px}
+    .stat{background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:14px; padding:12px}
+    .stat b{font-size:18px}
+    .stat span{display:block; color:var(--muted); font-size:12px}
+
+    /* Sections */
+    section{max-width:var(--maxw); margin:0 auto; padding:42px 16px}
+    .h2{font-size:26px; margin:0 0 14px}
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .card{background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px}
+    .card h3{margin:0 0 8px}
+    .pill{display:inline-block; font-size:12px; color:#111; background:var(--brand); padding:4px 10px; border-radius:999px; font-weight:700}
+    .kpi{display:flex; align-items:center; justify-content:space-between; gap:10px; background:var(--bg-2); padding:10px 12px; border-radius:12px; border:1px solid rgba(255,255,255,.06)}
+
+    /* Banner under hero */
+    .tgk-banner{max-width:var(--maxw); margin:0 auto; padding:0 16px 10px}
+    .tgk-banner .inner{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:14px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px}
+    .tgk-banner p{margin:0; color:var(--muted)}
+
+    /* CASINOS */
+    .casinos{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+    .casino{position:relative; overflow:hidden; border-radius:16px; border:1px solid rgba(255,255,255,.06); background:#0f0f12; padding:16px; display:flex; flex-direction:column; gap:8px}
+    .casino h3{margin:0 0 6px; color:var(--brand)}
+    .casino .meta{color:var(--muted); font-size:14px}
+    .promo{color:var(--brand); font-weight:600}
+    .row-btns{display:flex; gap:8px; flex-wrap:wrap}
+    .row-btns .btn{flex:1; text-align:center}
+
+    /* Steps */
+    .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+    .step{display:flex; gap:12px; align-items:flex-start}
+    .step .n{min-width:38px; height:38px; border-radius:10px; background:var(--brand); color:#111; display:grid; place-items:center; font-weight:900}
+
+    /* FAQ */
+    details{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:14px 16px}
+    details+details{margin-top:10px}
+    summary{cursor:pointer; font-weight:700}
+    summary::-webkit-details-marker{display:none}
+
+    /* Footer */
+    footer{border-top:1px solid rgba(255,255,255,.06); background:linear-gradient(180deg, rgba(255,255,255,.02), transparent), var(--bg-2)}
+    .foot{max-width:var(--maxw); margin:0 auto; padding:22px 16px; display:grid; grid-template-columns:1fr auto; gap:16px; align-items:center}
+    .legal{color:var(--muted); font-size:12px}
+
+    /* TG Subscribe Modal */
+    .modal{position:fixed; inset:0; background:rgba(0,0,0,.7); display:flex; align-items:center; justify-content:center; padding:16px; z-index:100}
+    .modal .box{background:var(--card); border:1px solid rgba(255,255,255,.1); border-radius:18px; padding:22px; max-width:520px; width:100%; box-shadow:var(--shadow); text-align:center}
+
+    /* TOAST */
+    .toast{position:fixed; right:16px; bottom:16px; background:rgba(0,0,0,.85); color:var(--text); padding:10px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.08); opacity:0; transform:translateY(10px); transition:.25s ease; z-index:200}
+    .toast.show{opacity:1; transform:translateY(0)}
+
+    /* Horizontal scroll utility for long content */
+    .scroll-x{overflow-x:auto; -webkit-overflow-scrolling:touch}
+    .scroll-x::-webkit-scrollbar{height:6px}
+    .scroll-x::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2); border-radius:6px}
+    .scroll-x-inner{min-width:640px}
+
+    /* Prevent layout breaks on long words/links */
+    a, .meta, .sub{word-break:break-word; overflow-wrap:anywhere}
+
+    /* MOBILE STICKY CTA */
+    .mobile-cta{display:none; position:fixed; left:0; right:0; bottom:0; padding:8px 12px calc(8px + env(safe-area-inset-bottom)); background:rgba(19,19,24,.95); border-top:1px solid rgba(255,255,255,.08); z-index:120; backdrop-filter:blur(6px)}
+    .mobile-cta .wrap{max-width:var(--maxw); margin:0 auto; display:flex; gap:8px}
+    .mobile-cta .btn{flex:1}
+
+    /* Responsive */
+
+    #bonuses .grid-3{display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; gap:12px; padding-bottom:6px; margin-right:-14px; margin-left:-14px; padding-left:14px}
+    #bonuses .grid-3 .card{flex:0 0 82%; min-width:260px; max-width:360px}
+    #bonuses .grid-3::-webkit-scrollbar{height:6px}
+    #bonuses .grid-3::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2); border-radius:6px}
+    
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr; padding-top:24px}
+      .casinos{grid-template-columns:repeat(2,1fr)}
+      .steps{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:720px){
+      :root{--header-h:64px
+      .meta{white-space:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch}
+      .meta::-webkit-scrollbar{height:6px}
+      .meta::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2); border-radius:6px}
+    }
+      body{font-size:16px}
+      .links{display:none}
+      .burger{display:flex}
+      .mobile{display:none}
+      .hero{gap:18px}
+      .btn{width:100%; padding:14px 16px; border-radius:12px}
+      .row-btns .btn{flex:1 1 100%}
+      .casinos{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr}
+      .mobile-cta{display:block}
+      footer{padding-bottom:72px} /* space for sticky bar */
+    }
+  </style>
+</head>
+<body>
+  <!-- TG SUBSCRIBE MODAL (instead of age-gate) -->
+  <div id="tgModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="tgTitle">
+    <div class="box">
+      <button id="tgClose" aria-label="Закрыть" style="position:absolute; right:14px; top:14px; background:transparent; border:none; color:var(--muted); font-size:20px; cursor:pointer">×</button>
+      <h2 id="tgTitle" style="margin:10px 0 6px">Подпишись на Telegram</h2>
+      <p class="sub">Все стримы, актуальные ссылки и закулисье — в моём Telegram. Подписывайся, чтобы первым получать промокоды, акции и важные апдейты.</p>
+      <div class="btns" style="justify-content:center">
+        <a class="btn btn--brand" href="https://t.me/Otezrandoma" target="_blank" rel="noopener">Перейти в TGK</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <nav class="nav">
+      <a href="#top" class="brand" aria-label="Отец Рандома">
+        <span class="dot"></span>
+        <span>Отец Рандома</span>
+      </a>
+      <div class="links" aria-label="Навигация">
+        <a data-scroll="#bonuses">Бонусы</a>
+        <a data-scroll="#casinos">Проекты</a>
+        <a data-scroll="#steps">Как начать</a>
+        <a data-scroll="#faq">FAQ</a>
+        <a data-scroll="#policy">Политика</a>
+        <a href="https://t.me/Otezrandoma" target="_blank" rel="noopener">TGK</a>
+      </div>
+      <a class="cta" data-scroll="#casinos">Начать сейчас</a>
+      <button class="burger" id="burger" aria-label="Меню"><span></span></button>
+    </nav>
+    <div class="mobile" id="mobileMenu">
+      <a data-scroll="#bonuses">Бонусы</a>
+      <a data-scroll="#casinos">Проекты</a>
+      <a data-scroll="#steps">Как начать</a>
+      <a data-scroll="#faq">FAQ</a>
+      <a data-scroll="#policy">Политика</a>
+      <a href="https://t.me/Otezrandoma" target="_blank" rel="noopener">TGK</a>
+      <a class="cta" data-scroll="#casinos">Начать сейчас</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="top" class="hero">
+    <div>
+      <span class="tag"><b>Стартовые бонусы</b> и быстрые выплаты</span>
+      <h1>Играй с умом: проверенные проекты и прозрачные условия</h1>
+      <p class="sub">Подборка площадок, промо и мои стримы. Всё по‑деловому и без лишнего шума. 18+.</p>
+      <div class="btns">
+        <a class="btn btn--brand" data-scroll="#casinos"><strong>Открыть список проектов</strong></a>
+        <a class="btn" data-scroll="#bonuses">Смотреть бонусы</a>
+      </div>
+      <div class="kpi" style="margin-top:16px">
+        <span>Telegram</span>
+        <div style="display:flex; gap:8px; align-items:center">
+          <a class="pill" href="https://t.me/Otezrandoma" target="_blank" rel="noopener">@Otezrandoma</a>
+          <small class="sub">в закрепе — ссылки и розыгрыши</small>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>0–10 мин</b><span>среднее время вывода*</span></div>
+        <div class="stat"><b>24/7</b><span>поддержка</span></div>
+        <div class="stat"><b>18+</b><span>ответственная игра</span></div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="kpi"><span>Актуальный промо</span><b style="color:var(--brand)">BLANCE / BLANCE50</b></div>
+      <ul style="margin:12px 0 0; padding-left:18px; color:var(--muted)">
+        <li>до 225–500% на первый депозит* (по условиям площадки)</li>
+        <li>фриспины на популярные провайдеры</li>
+        <li>кэшбек до 20%</li>
+      </ul>
+      <div class="btns" style="margin-top:14px">
+        <a class="btn btn--brand" data-scroll="#casinos">Открыть проекты</a>
+        <a class="btn" data-scroll="#policy">Условия</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- BONUSES -->
+  <section id="bonuses">
+    <h2 class="h2">Топ бонусов</h2>
+    <div class="grid-3">
+      <div class="card">
+        <div class="pill">Депозит + фриспины</div>
+        <h3>Старт 225%</h3>
+        <p class="sub">Пополнение от 1000 ₽, вейджер и лимиты зависят от площадки. Смотрите условия.</p>
+        <div class="btns"><a class="btn btn--brand" data-scroll="#casinos">Выбрать площадку</a><a class="btn" data-scroll="#policy">Правила</a></div>
+      </div>
+      <div class="card">
+        <div class="pill">Кэшбек</div>
+        <h3>До 20% еженедельно</h3>
+        <p class="sub">Начисление по пн., срок действия 7 дней, детали у оператора.</p>
+        <div class="btns"><a class="btn btn--brand" data-scroll="#casinos">Активировать</a><a class="btn" data-scroll="#faq">Как работает?</a></div>
+      </div>
+      <div class="card">
+        <div class="pill">Турниры</div>
+        <h3>Сезонные акции</h3>
+        <p class="sub">Призовой фонд и правила зависят от проекта. Проверяйте актуальность.</p>
+        <div class="btns"><a class="btn btn--brand" data-scroll="#casinos">Участвовать</a><a class="btn" data-scroll="#policy">Условия</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASINOS -->
+  <section id="casinos">
+    <h2 class="h2">Проекты (нажмите на название, чтобы перейти)</h2>
+    <div class="casinos">
+      <div class="casino">
+        <h3><a href="https://martin-way-six.com/cadd2755a" target="_blank" rel="noopener">MARTIN</a></h3>
+        <div class="meta">Бонус: 225% + 50 фриспинов • Промокод: <span class="promo">BLANCE50</span></div>
+        <div class="meta">Отличный стартовый буст и быстрая регистрация</div>
+        <div class="row-btns">
+          <a class="btn" href="https://martin-way-six.com/cadd2755a" target="_blank" rel="noopener">Перейти</a>
+          <button class="btn" onclick="copyPromo('BLANCE50')">Скопировать промокод</button>
+        </div>
+      </div>
+      <div class="casino">
+        <h3><a href="https://izzi-blrs10.com/c4f5940ef" target="_blank" rel="noopener">IZZI</a></h3>
+        <div class="meta">Бонус: 225% + 50 фриспинов • Промокод: <span class="promo">BLANCE50</span></div>
+        <div class="meta">Минимализм и удобство</div>
+        <div class="row-btns">
+          <a class="btn" href="https://izzi-blrs10.com/c4f5940ef" target="_blank" rel="noopener">Перейти</a>
+          <button class="btn" onclick="copyPromo('BLANCE50')">Скопировать промокод</button>
+        </div>
+      </div>
+      <div class="casino">
+        <h3><a href="https://strd-blse21.com/cea7bbb31" target="_blank" rel="noopener">STARDA</a></h3>
+        <div class="meta">Бонус: 225% + 50 фриспинов • Промокод: <span class="promo">BLANCE50</span></div>
+        <div class="meta">Актуальные акции и быстрая выдача бонуса</div>
+        <div class="row-btns">
+          <a class="btn" href="https://strd-blse21.com/cea7bbb31" target="_blank" rel="noopener">Перейти</a>
+          <button class="btn" onclick="copyPromo('BLANCE50')">Скопировать промокод</button>
+        </div>
+      </div>
+      <div class="casino">
+        <h3><a href="https://flagman-way-five.com/ca5fd750a" target="_blank" rel="noopener">FLAGMAN</a></h3>
+        <div class="meta">Бонус: 225% + 50 фриспинов • Промокод: <span class="promo">BLANCE50</span></div>
+        <div class="meta">Удобный интерфейс и свежие слоты</div>
+        <div class="row-btns">
+          <a class="btn" href="https://flagman-way-five.com/ca5fd750a" target="_blank" rel="noopener">Перейти</a>
+          <button class="btn" onclick="copyPromo('BLANCE50')">Скопировать промокод</button>
+        </div>
+      </div>
+      <div class="casino">
+        <h3><a href="https://irwinway3.com/c651c844a" target="_blank" rel="noopener">IRWIN</a></h3>
+        <div class="meta">Бонус: 225% + 50 фриспинов • Промокод: <span class="promo">BLANCE50</span></div>
+        <div class="meta">Кэшбэки и еженедельные подарки</div>
+        <div class="row-btns">
+          <a class="btn" href="https://irwinway3.com/c651c844a" target="_blank" rel="noopener">Перейти</a>
+          <button class="btn" onclick="copyPromo('BLANCE50')">Скопировать промокод</button>
+        </div>
+      </div>
+      <div class="casino">
+        <h3><a href="https://lkbb.cc/afeb" target="_blank" rel="noopener">1WIN</a></h3>
+        <div class="meta">Бонус: 500% + 70 фриспинов • Промокод: <span class="promo">BLANCE</span></div>
+        <div class="meta">Самый крупный бонус для новичков</div>
+        <div class="row-btns">
+          <a class="btn" href="https://lkbb.cc/afeb" target="_blank" rel="noopener">Перейти</a>
+          <button class="btn" onclick="copyPromo('BLANCE')">Скопировать промокод</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEPS -->
+  <section id="steps">
+    <h2 class="h2">Как начать</h2>
+    <div class="steps">
+      <div class="step card">
+        <div class="n">1</div>
+        <div>
+          <h3>Выберите проект</h3>
+          <p class="sub">В разделе «Проекты» нажмите на нужное название — откроется официальный сайт.</p>
+        </div>
+      </div>
+      <div class="step card">
+        <div class="n">2</div>
+        <div>
+          <h3>Активируйте промо</h3>
+          <p class="sub">Вводите промокоды BLANCE / BLANCE50 по условиям площадки. Проверьте вейджер и сроки.</p>
+        </div>
+      </div>
+      <div class="step card">
+        <div class="n">3</div>
+        <div>
+          <h3>Играйте ответственно</h3>
+          <p class="sub">Определите банкролл заранее. Играй ради эмоций, а не заработка.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <h2 class="h2">FAQ</h2>
+    <details>
+      <summary>Где ссылка на площадку?</summary>
+      <div class="sub">В разделе «Проекты». Нажмите на название, чтобы перейти. Все ссылки открываются в новой вкладке.</div>
+    </details>
+    <details>
+      <summary>Это реклама?</summary>
+      <div class="sub">Материалы могут содержать рекламные интеграции. Отмечено как #ad / #партнёрство, если применимо.</div>
+    </details>
+    <details>
+      <summary>Ответственная игра</summary>
+      <div class="sub">Играйте только если вам 18+, не занимайте и не пытайтесь «отбиться». Если чувствуете проблему — обратитесь в BeGambleAware.</div>
+    </details>
+  </section>
+
+  <!-- POLICY -->
+  <section id="policy">
+    <h2 class="h2">Политика и условия промо</h2>
+    <div class="card">
+      <div class="scroll-x">
+        <ul class="scroll-x-inner" style="margin:0; padding-left:18px; color:var(--muted)">
+
+        <li>* Пример условий: минимальный депозит, вейджер бонуса и прочие ограничения определяются площадкой.</li>
+        <li>Максимальный выигрыш с бонусных средств может быть ограничен. Ознакомьтесь с условиями оффера на стороне площадки.</li>
+        <li>Все торговые марки принадлежат их владельцам. Этот сайт — промо‑лендинг контент‑криэйтора и не является оператором азартных игр.</li>
+      
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot">
+      <div class="legal">© <span id="y"></span> Отец Рандома • 18+ • Ответственная игра • <a href="#policy">Политика</a></div>
+      <div class="btns">
+        <a class="btn" href="https://t.me/Otezrandoma" target="_blank" rel="noopener">Telegram</a>
+        <a class="btn" data-scroll="#faq">FAQ</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Sticky CTA (only phones) -->
+  <div class="mobile-cta" aria-hidden="true">
+    <div class="wrap">
+      <a class="btn" href="https://t.me/Otezrandoma" target="_blank" rel="noopener">TGK</a>
+      <a class="btn btn--brand" data-scroll="#casinos">Открыть проекты</a>
+    </div>
+  </div>
+
+  <!-- Toast element -->
+  <div id="toast" class="toast">Промокод скопирован</div>
+
+  <script>
+    // ---- Год в футере ----
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // ---- Бургер меню ----
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    burger?.addEventListener('click', () => {
+      const showing = mobileMenu.style.display === 'block';
+      mobileMenu.style.display = showing ? 'none' : 'block';
+    });
+
+    // ---- Якоря со смещением под фикс‑хедер ----
+    function smoothScrollTo(hash){
+      const el = document.querySelector(hash);
+      if(!el) return;
+      const headerH = document.querySelector('.header').offsetHeight || 0;
+      const rect = el.getBoundingClientRect();
+      const y = rect.top + window.pageYOffset - (headerH + 10);
+      window.scrollTo({top: y, behavior:'smooth'});
+    }
+    document.querySelectorAll('[data-scroll]')?.forEach(a => {
+      a.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const hash = a.getAttribute('data-scroll');
+        if(hash){ smoothScrollTo(hash); }
+        mobileMenu.style.display = 'none';
+      });
+    });
+
+    // ---- TG subscribe modal (auto once per session, delay, close) ----
+    const tgModal = document.getElementById('tgModal');
+    const tgClose = document.getElementById('tgClose');
+    const tgSeen = sessionStorage.getItem('tg_seen');
+    function hideTG(){ tgModal.style.display='none'; document.body.style.overflow=''; sessionStorage.setItem('tg_seen','1'); }
+    function showTG(){ tgModal.style.display='flex'; document.body.style.overflow='hidden'; }
+    if(tgSeen==='1'){ tgModal.style.display='none'; }
+    else { setTimeout(showTG, 1200); }
+    tgModal.addEventListener('click', e => { if(e.target===tgModal){ hideTG(); } });
+    tgClose?.addEventListener('click', hideTG);
+
+    // ---- Copy promo + toast ----
+    const toast = document.getElementById('toast');
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(()=>toast.classList.remove('show'), 1800);
+    }
+    function copyPromo(code){
+      navigator.clipboard.writeText(code).then(()=>{
+        showToast('Промокод '+code+' скопирован');
+      }).catch(()=>{
+        showToast('Не удалось скопировать');
+      });
+    }
+    window.copyPromo = copyPromo;
+  </script>
+</body>
+</html>
